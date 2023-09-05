@@ -5,7 +5,7 @@ from pprint import pprint
 # from hubspot.crm.line_items import ApiException
 import requests
 
-hubspot_access_token = 'pat-na1-19b7c81c-9707-4935-a04a-3e2e4fa0e3a5'
+hubspot_access_token = ''
 client = hubspot.Client.create(access_token=hubspot_access_token)
 hubspot_headers = {
     'Content-Type': 'application/json',
@@ -54,7 +54,6 @@ def lambda_handler(event, context):
     print(ip_response.text)
 
     deal_id = event["deal_id"]
-    #deal_id = 12414085396
     company_id_list = getAssociatedIdList(deal_id, 'companies')
     contact_id_list = getAssociatedIdList(deal_id, 'contacts')
     line_items_id_list = getAssociatedIdList(deal_id, 'line_items')
@@ -95,8 +94,8 @@ def lambda_handler(event, context):
     }
     #print(import_data)
     
-    kin_headers = {'Content-Type': 'application/json', 'X-Cybozu-API-Token': '8Xx4juwUDnGo2KcKFyPEJ5obrV3u0cPfREOVYC5G'}
-    K_BASE_URL = 'https://9keyb8lwayhh.cybozu.com/k/v1'
+    kin_headers = {'Content-Type': 'application/json', 'X-Cybozu-API-Token': ''}
+    K_BASE_URL = 'https://hoge.cybozu.com/k/v1'
     import_url = '{}/record.json'.format(K_BASE_URL)
     response = requests.post(import_url, headers=kin_headers, json=import_data)
     print(response.text)
